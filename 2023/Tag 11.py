@@ -2,6 +2,7 @@
 def read_input(file_path):
     with open(file_path) as file:
         data = file.read().strip()
+        
     return data.split('\n')
 
 
@@ -11,6 +12,7 @@ def find_empty_rows(matrix):
 
     for i in range(size):
         is_empty = all(cell == '.' for cell in matrix[i])
+        
         if is_empty:
             empty_row_indices.append(i)
 
@@ -23,6 +25,7 @@ def find_empty_cols(matrix):
 
     for i in range(size):
         is_empty = all(row[i] == '.' for row in matrix)
+        
         if is_empty:
             empty_col_indices.append(i)
 
@@ -65,5 +68,5 @@ def main(file_path):
 
 
 if __name__ == "__main__":
-    file_path = "input.txt"  # Replace this with the actual file path
+    file_path = "input.txt"
     main(file_path)

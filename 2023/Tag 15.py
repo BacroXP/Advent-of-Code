@@ -23,6 +23,7 @@ def find_order(c):
         name = c[:-1]
         hash = calc(name)
         BOX[hash] = [(n, v) for (n, v) in BOX[hash] if n != name]
+        
     elif c[-2] == '=':
         name = c[:-2]
         hash = calc(name)
@@ -30,6 +31,7 @@ def find_order(c):
 
         if name in [n for (n, v) in BOX[hash]]:
             BOX[hash] = [(n, len_ if name == n else v) for (n, v) in BOX[hash]]
+            
         else:
             BOX[hash].append((name, len_))
 

@@ -13,10 +13,13 @@ for task in tasks:
 
     if int(elf1[0]) <= int(elf2[0]) <= int(elf1[1]):
         overlapping += 1
+
     elif int(elf1[0]) <= int(elf2[1]) <= int(elf1[1]):
         overlapping += 1
+
     elif int(elf2[0]) <= int(elf1[0]) <= int(elf2[1]):
         overlapping += 1
+
     elif int(elf2[0]) <= int(elf1[1]) <= int(elf2[1]):
         overlapping += 1
 

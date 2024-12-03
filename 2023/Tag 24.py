@@ -8,15 +8,14 @@ L = D.split('\n')
 G = [[c for c in row] for row in L]
 R = len(G)
 C = len(G[0])
-
 S = []
+
 for line in L:
     pos, vel = line.split('@')
     x, y, z = map(int, pos.split(', '))
     vx, vy, vz = map(int, vel.split(', '))
     S.append((x, y, z, vx, vy, vz))
 
-# Part 1: Pairwise Intersection Calculation
 ans = 0
 for i in range(len(S)):
     for j in range(i + 1, len(S)):
@@ -26,6 +25,7 @@ for i in range(len(S)):
         y3, y4 = S[j][1], S[j][1] + S[j][4]
 
         den = ((x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4))
+        
         if den != 0:
             px = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / den
             py = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / den
@@ -38,10 +38,7 @@ for i in range(len(S)):
                 ans += 1
 
 print("Part 1:", ans)
-print(time.time() - offset)
-offset = time.time()
 
-# Part 2: Z3 Solver
 x, y, z, vx, vy, vz = Int('x'), Int('y'), Int('z'), Int('vx'), Int('vy'), Int('vz')
 T = [Int(f'T{i}') for i in range(len(S))]
 SOLVE = Solver()
@@ -53,5 +50,6 @@ for i in range(len(S)):
 
 res = SOLVE.check()
 M = SOLVE.model()
+
 print("Part 2:", M.eval(x + y + z))
 print(time.time() - offset)

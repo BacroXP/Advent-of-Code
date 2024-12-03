@@ -24,24 +24,31 @@ for r in range(row):
             down_valid = (grid[r+1][c] in ['|', 'L', 'J'])
             left_valid = (grid[r][c-1] in ['-', 'L', 'F'])
             assert sum([up_valid, right_valid, down_valid, left_valid]) == 2
+            
             if up_valid and down_valid:
                 grid[r][c] = '|'
                 sd = 0
+                
             elif up_valid and right_valid:
                 grid[r][c] = 'L'
                 sd = 0
+                
             elif up_valid and left_valid:
                 grid[r][c] = 'J'
                 sd = 0
+                
             elif down_valid and right_valid:
                 grid[r][c] = 'F'
                 sd = 2
+                
             elif down_valid and left_valid:
                 grid[r][c] = '7'
                 sd = 2
+                
             elif left_valid and right_valid:
                 grid[r][c] = '-'
                 sd = 1
+                
             else:
                 assert False
 
@@ -96,26 +103,32 @@ for r in range(row):
             G2[3*r+0][3*c+1] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+2][3*c+1] = 'x'
+            
         elif grid[r][c] == '-':
             G2[3*r+1][3*c+0] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+1][3*c+2] = 'x'
+            
         elif grid[r][c] == '7':
             G2[3*r+1][3*c+0] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+2][3*c+1] = 'x'
+            
         elif grid[r][c] == 'F':
             G2[3*r+2][3*c+1] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+1][3*c+2] = 'x'
+            
         elif grid[r][c] == 'J':
             G2[3*r+1][3*c+0] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+0][3*c+1] = 'x'
+            
         elif grid[r][c] == 'L':
             G2[3*r+0][3*c+1] = 'x'
             G2[3*r+1][3*c+1] = 'x'
             G2[3*r+1][3*c+2] = 'x'
+            
         elif grid[r][c] == '.':
             pass
         else:

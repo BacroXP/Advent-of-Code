@@ -1,31 +1,69 @@
-import sys
-
-directions = {"<": (-1, 0), ">": (1, 0), "^": (0, 1), "v": (0, -1)}
-
-for part1 in [True, False]:
+def sol(address):
+    cmds = open(address).read().strip()
     santa = True
-    result = 1
+    sol1 = 0
+    sol2 = 0
+
+    santa_x, santa_y = 0, 0
+    santa_positions = set()
+    santa_positions.add((santa_x, santa_y))
+
+    for char in cmds:
+        if char == '^':
+            santa_y += 1
+        elif char == 'v':
+            santa_y -= 1
+        elif char == '>':
+            santa_x += 1
+        elif char == '<':
+            santa_x -= 1
+
+        santa_positions.add((santa_x, santa_y))
+
+    sol1 = len(santa_positions)
+
+    santa_x = 0
+    santa_y = 0
+    elf_x = 0
+    elf_y = 0
     
-    position_santa = {"x": 0, "y": 0}
-    position_robo = {"x": 0, "y": 0}
-    positions = [[0, 0]]
+    positions = set()
+    positions.add((0, 0))
+    
+    for char in cmds:
+        if char == '^':
+            if santa:
+                santa_y += 1
+            else:
+                elf_y += 1
+        elif char == 'v':
+            if santa:
+                santa_y -= 1
+            else:
+                elf_y -= 1
+        elif char == '>':
+            if santa:
+                santa_x += 1
+            else:
+                elf_x += 1
+        elif char == '<':
+            if santa:
+                santa_x -= 1
+            else:
+                elf_x -= 1
+        
+        positions.add((santa_x, santa_y) if santa else (elf_x, elf_y))
+        
+        santa = not santa
+    
+    sol2 = len(positions)
 
-    with open(sys.argv[1], "r") as file:
-        for line in file:
-            for char in line:
-                if santa or part1:
-                    position_santa["x"] += directions[char][0]
-                    position_santa["y"] += directions[char][1]
-                    if [position_santa["x"], position_santa["y"]] not in positions:
-                        result += 1
-                        positions.append([position_santa["x"], position_santa["y"]])
-                    santa = not santa
-                else:
-                    position_robo["x"] += directions[char][0]
-                    position_robo["y"] += directions[char][1]
-                    if [position_robo["x"], position_robo["y"]] not in positions:
-                        result += 1
-                        positions.append([position_robo["x"], position_robo["y"]])
-                    santa = not santa
+    print("Solution 1: " + str(sol1))
+    print("Solution 2: " + str(sol2))
 
-    print(result)
+
+test_link = "test.txt"
+real_link = "input.txt"
+
+sol(test_link)
+sol(real_link)

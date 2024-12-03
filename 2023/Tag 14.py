@@ -5,9 +5,11 @@ def rotate(stones):
     len_r = len(stones)
     len_c = len(stones[0])
     new_stones = [['?' for _ in range(len_r)] for _ in range(len_c)]
+    
     for r in range(len_r):
         for c in range(len_c):
             new_stones[c][len_r - 1 - r] = stones[r][c]
+            
     return new_stones
 
 
@@ -42,6 +44,7 @@ def find_weight(stones):
 with open("input.txt", "r") as file:
     for y, line in enumerate(file):
         rocks.append([])
+        
         for char in line:
             if char != "\n":
                 rocks[y].append(char)
@@ -53,14 +56,18 @@ t = 0
 while t < target:
     for dir in range(4):
         rocks = roll_stones(rocks)
+        
         if t == 0 and dir == 0:
             find_weight(rocks)
+            
         rocks = rotate(rocks)
         rock_formation = tuple(tuple(row) for row in rocks)
+        
         if rock_formation in rock_formations:
             cycle_length = t - rock_formations[rock_formation]
             amt = (target - t) // cycle_length
             t += amt * cycle_length
+            
         rock_formations[rock_formation] = t
     t += 1
 

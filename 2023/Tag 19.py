@@ -42,12 +42,16 @@ def accepted(part):
 def new_range(operator, n, low, high):
     if operator == '>':
         low = max(low, n + 1)
+        
     elif operator == '<':
         high = min(high, n - 1)
+        
     elif operator == '>=':
         low = max(low, n)
+        
     elif operator == '<=':
         high = min(high, n)
+        
     else:
         assert False
 
@@ -58,12 +62,16 @@ def new_ranges(variable, operator, n,
                xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh):
     if variable == 'x':
         xlow, xhigh = new_range(operator, n, xlow, xhigh)
+        
     elif variable == 'm':
         mlow, mhigh = new_range(operator, n, mlow, mhigh)
+        
     elif variable == 'a':
         alow, ahigh = new_range(operator, n, alow, ahigh)
+        
     elif variable == 's':
         slow, shigh = new_range(operator, n, slow, shigh)
+        
     return (xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh)
 
 
@@ -73,6 +81,7 @@ Q = deque([('in', 1, 4000, 1, 4000, 1, 4000, 1, 4000)])
 for part in parts.split('\n'):
     part = part[1:-1]
     part = {x.split('=')[0]:int(x.split('=')[1]) for x in part.split(',')}
+    
     if accepted(part):
         answer += part['x'] + part['m'] + part['a'] + part['s']
 
@@ -81,19 +90,25 @@ answer = 0
 
 while Q:
     state, xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh = Q.pop()
+    
     if xlow > xhigh or mlow > mhigh or alow > ahigh or slow > shigh:
         continue
+    
     if state == 'A':
         score = (xhigh - xlow + 1) * (mhigh - mlow + 1) * (ahigh - alow + 1) * (shigh - slow + 1)
         answer += score
         continue
+    
     elif state=='R':
         continue
+    
     else:
         rule = memory[state]
+        
         for command in rule.split(','):
             applies = True
             result = command
+            
             if ':' in command:
                 condition, result = command.split(':')
                 variable = condition[0]
@@ -101,6 +116,7 @@ while Q:
                 n = int(condition[2:])
                 Q.append((result, * new_ranges(variable, operator, n, xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh)))
                 xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh = new_ranges(variable, '<=' if operator == '>' else '>=', n, xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh)
+            
             else:
                 Q.append((result, xlow, xhigh, mlow, mhigh, alow, ahigh, slow, shigh))
                 break

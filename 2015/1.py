@@ -1,24 +1,23 @@
-import sys
 
-distr = {"(": 1, ")": -1}
-commands = []
+test_link = "test.txt"
+real_link = "input.txt"
 
-with open(sys.argv[1]) as file:
-    for line in file:
-        for char in line:
-            if char != "\n":
-                commands.append(distr[char])
 
-print(sum(commands))
-
-floor = 0
-sols = []
-
-for i, c in enumerate(commands):
-    floor += c
+def sol(address):
+    cmd = open(address).read().strip()
+    distr = {"(": 1, ")": -1}
+    sol1 = 0
+    sol2 = -1
     
-    if floor == -1:
-        sols.append(i + 1)
+    for i, char in enumerate(cmd):
+        sol1 += distr[char]
+        
+        if sol1 == -1 and sol2 == -1:
+            sol2 = i + 1
+    
+    print("Solution 1:" + str(sol1))
+    print("Solution 2:" + str(sol2))
 
-sols.sort()
-print(sols[0])
+
+sol(test_link)
+sol(real_link)

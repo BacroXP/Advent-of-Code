@@ -1,40 +1,25 @@
-import sys
+def sol(address):
+    details = [line.split("x") for line in open(address).read().strip().split("\n")]
+    
+    sol1 = 0
+    sol2 = 0
+    
+    for detail in details:
+        dimensions = sorted(map(int, detail))
 
-dimensions = []
+        l, w, h = dimensions
+        sol1 += 2 * (l * w + w * h + h * l)
+        sol1 += l * w
 
-with open(sys.argv[-1], "r") as file:
-    for line in file:
-        anz = -1
-        paket = []
-        line += "x"
+        sol2 += 2 * (l + w)
+        sol2 += l * w * h
 
-        for char in line:
-            if char.isdigit():
-                if anz == -1:
-                    anz = int(char)
-                else:
-                    anz = int(str(anz) + char)
-            if char == "x" and anz != -1:
-                paket.append(anz)
-                anz = -1
+    print("Solution 1: " + str(sol1))
+    print("Solution 2: " + str(sol2))
 
-        paket.sort()
-        print(paket)
-        dimensions.append(paket)
 
-wrapping_paper = 0
-ribbon = 0
+test_link = "test.txt"
+real_link = "input.txt"
 
-for id in range(len(dimensions)):
-    wrapping_paper += 2 * dimensions[id][0] * dimensions[id][1]
-    wrapping_paper += 2 * dimensions[id][1] * dimensions[id][2]
-    wrapping_paper += 2 * dimensions[id][2] * dimensions[id][0]
-    wrapping_paper += dimensions[id][0] * dimensions[id][1]
-
-    ribbon += 2 * dimensions[id][0]
-    ribbon += 2 * dimensions[id][1]
-    ribbon += 2 * dimensions[id][2]
-    ribbon += dimensions[id][0] * dimensions[id][1] * dimensions[id][2]
-
-print(wrapping_paper)
-print(ribbon)
+sol(test_link)
+sol(real_link)

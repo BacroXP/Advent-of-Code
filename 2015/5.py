@@ -1,16 +1,30 @@
-import sys
 
-is_nice_1 = lambda s: (
-    sum(c in 'aeiou' for c in s) >= 3 and
-    any(a == b for a, b in zip(s, s[1:])) and
-    all(f not in s for f in ('ab', 'cd', 'pq', 'xy')))
-
-is_nice_2 = lambda s: (
-    any(s[i:i+2] in s[:i] for i in range(len(s)-1)) and
-    any(a == b for a, b in zip(s, s[2:])))
+test_link = "test.txt"
+real_link = "input.txt"
 
 
-data = open(sys.argv[1]).read().splitlines()
+def sol(address):
+    words = open(address).read().strip().split("\n")
+    sol1 = 0
+    sol2 = 0
+    
+    for word in words:
+        if (
+            sum(1 for c in word if c in "aeiou") >= 3 and
+            any(word[i] == word[i + 1] for i in range(len(word) - 1)) and
+            all(sub not in word for sub in ["ab", "cd", "pq", "xy"])
+        ):
+            sol1 += 1
 
-print(sum(map(is_nice_1, data)))
-print(sum(map(is_nice_2, data)))
+        if (
+            any(word[i:i+2] in word[i+2:] for i in range(len(word) - 1)) and
+            any(word[i] == word[i + 2] for i in range(len(word) - 2))
+        ):
+            sol2 += 1
+
+    print("Solution 1:", sol1)
+    print("Solution 2:", sol2)
+
+
+sol(test_link)
+sol(real_link)
