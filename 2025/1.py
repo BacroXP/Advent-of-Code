@@ -1,6 +1,5 @@
 import libs.input
 
-
 file = libs.input.file()
 
 pos = 50
@@ -8,12 +7,8 @@ p1 = 0
 p2 = 0
 
 for line in file:
-    d = line[0]
-    amt = int(line[1:])
-
-    for _ in range(amt):
-
-        if d=='L':
+    for _ in range(int(line[1:])):
+        if line.startswith("L"):
             pos = (pos + 99) % 100
         else:
             pos = (pos+1) % 100
