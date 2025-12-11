@@ -1,18 +1,19 @@
 
+
 def divisors(n):
     divs = set()
+
     for i in range(1, int(n ** .5) + 1):
         if n % i == 0:
             divs.add(i)
             divs.add(n // i)
+
     return divs
 
 
-inputs = open("input.txt").read().strip().split(",")
-sol1 = 0
-sol2 = 0
+sol1, sol2 = 0, 0
 
-for inp in inputs:
+for inp in open("input.txt").read().strip().split(","):
     inp = inp.split("-")
 
     if inp[0].startswith("0") or inp[1].startswith("0"):
