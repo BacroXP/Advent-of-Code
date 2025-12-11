@@ -1,12 +1,9 @@
 import libs.input
 
-file = libs.input.file()
-
 pos = 50
-p1 = 0
-p2 = 0
+p1, p2 = 0, 0
 
-for line in file:
+for line in libs.input.file():
     for _ in range(int(line[1:])):
         if line.startswith("L"):
             pos = (pos + 99) % 100
