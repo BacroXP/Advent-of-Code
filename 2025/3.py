@@ -8,7 +8,7 @@ def get_max(nums, left):
 
 
 for line in libs.input.file():
-    nums = [int(c) for c in line]
+    nums = list(map(int, line))
     biggest, nums = get_max(nums, 1)
     sol1 += int(str(biggest) + str(get_max(nums, 0)[0]))
 
