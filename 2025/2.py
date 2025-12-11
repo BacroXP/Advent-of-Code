@@ -21,14 +21,14 @@ for inp in open("input.txt").read().strip().split(","):
 
     for i in range(int(inp[0]), int(inp[1]) + 1):
 
-        if str(i)[:len(str(i)) // 2] == str(i)[len(str(i)) // 2:]:
+        if str(i)[: len(str(i)) // 2] == str(i)[len(str(i)) // 2:]:
             sol1 += i
         
         for d in divisors(len(str(i))):
             if d == len(str(i)):
                 continue
 
-            if str(i)[:d] * (len(str(i)) // d) == str(i):
+            if str(i)[: d] * (len(str(i)) // d) == str(i):
                 sol2 += i
                 break
 
