@@ -13,10 +13,10 @@ for line in file:
         else:
             pos = (pos+1) % 100
 
-        if pos==0:
+        if pos == 0:
             p2 += 1
 
-    if pos==0:
+    if pos == 0:
         p1 += 1
 
 print(p1)
