@@ -1,15 +1,13 @@
 import libs.input
 
-inp = libs.input.file()
-sol1 = 0
-sol2 = 0
+sol1, sol2 = 0, 0
 
 
 def get_max(nums, left):
-    return max(nums[:len(nums) - left]), nums[nums.index(max(nums[:len(nums) - left])) + 1 :]
+    return max(nums[: len(nums) - left]), nums[nums.index(max(nums[: len(nums) - left])) + 1 :]
 
 
-for line in inp:
+for line in libs.input.file():
     nums = [int(c) for c in line]
     biggest, nums = get_max(nums, 1)
     sol1 += int(str(biggest) + str(get_max(nums, 0)[0]))
