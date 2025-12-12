@@ -36,16 +36,19 @@ def count_paths_bfs(sr, sc):
 def count_paths_dfs(r, c):
     if grid[r][c] == 0:
         return 1
+
     if (r, c) in dp_cache:
         return dp_cache[(r, c)]
 
     total = 0
     for dr, dc in [(-1, 0), (0, 1), (1, 0), (0, -1)]:
         nr, nc = r + dr, c + dc
+
         if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc] == grid[r][c] - 1:
             total += count_paths_dfs(nr, nc)
 
     dp_cache[(r, c)] = total
+
     return total
 
 
