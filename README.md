@@ -36,8 +36,8 @@ Each day’s solution is typically a single file named `dayXX.py` (or another la
 To run a solution:
 
 ```bash
-python 2025/day01.py
-
+python 2025/1.py
+```
 
 Adjust the path according to the year and day you want to run.
 
