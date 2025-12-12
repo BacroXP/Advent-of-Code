@@ -1,5 +1,3 @@
-
-
 def divisors(n):
     divs = set()
 
