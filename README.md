@@ -9,16 +9,16 @@ This repository contains my solutions to the annual programming challenge [Adven
 | Year | Status | Screenshot |
 |------|--------|------------|
 | 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2025/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2024/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2023/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2022/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2021/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2020/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2019/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2018/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2017/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2016/screenshot.png) |
-| 2025 | ![Completed](https://img.shields.io/badge/Status-Completed-brightgreen) | ![2025 Screenshot](2015/screenshot.png) |
+| 2024 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2024/screenshot.png) |
+| 2023 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2023/screenshot.png) |
+| 2022 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2022/screenshot.png) |
+| 2021 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2021/screenshot.png) |
+| 2020 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2020/screenshot.png) |
+| 2019 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2019/screenshot.png) |
+| 2018 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2018/screenshot.png) |
+| 2017 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2017/screenshot.png) |
+| 2016 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2016/screenshot.png) |
+| 2015 | ![In Progress](https://img.shields.io/badge/Status-In%20Progress-yellow) | ![2025 Screenshot](2015/screenshot.png) |
 
 Each day’s solution is typically a single file named `XX.py`.
 
